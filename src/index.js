@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class App extends React.Component {
+class App extends React.Component 
+//React says we have to define render!!
   render() {
     window.navigator.geolocation.getCurrentPosition(
       (position) => console.log(position),
