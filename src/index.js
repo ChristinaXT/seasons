@@ -2,30 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  state = { lat: null, errorMessage: '' };
 
-//THIS IS THE ONLY TIME we do direct assignment to this.state
-    this.state = { lat: null, errorMessage: '' };
-
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
-      position => {
-      //to update state object, we called setState!!!
-        this.setState({ lat: position.coords.latitude });
-      },
-      err => {
-        this.setState({ errorMessage: err.message});
-      }
+      position => this.setState({ lat: position.coords.latitude }),
+      err => this.setState({ errorMessage: err.message })
     );
   }
-
-componentDidMount() {
-  console.log('My component was rendered to the screen');
-}
-
-componentDidUpdate() {
-  console.log('My component was just updated - it rerendered!');
-}
 
 //React says we have to define render!!
   render() {
